@@ -12,7 +12,7 @@ public class AddressManipulator {
 		myAddress.setZipCode(externalAddress.getZipCode());
 		myAddress.setCity(zipCodeMapper.mapCityFromZipCode(myAddress.getZipCode()));
 
-		if("OSLO".equals(myAddress.getCity())) {
+		if(myAddress.isInOslo()) {
 			// Do something 
 		} else {
 			// Do something else

@@ -19,4 +19,9 @@ public class InternalAddress {
 		return null;
 	}
 
+	public boolean isInOslo() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
 }
