@@ -1,16 +1,18 @@
 package no.gjengeda;
 
+import no.gjengeda.model.AddressBuilder;
 import no.gjengeda.model.ExternalAddress;
 import no.gjengeda.model.InternalAddress;
 import no.gjengeda.model.ZipCodeMapper;
 
 public class AddressManipulator {
 
+	AddressBuilder addressBuilder;
+	
 	public void createInternalAddressAndDoSomethingWithIt(ExternalAddress externalAddress, ZipCodeMapper zipCodeMapper) {
-		InternalAddress myAddress = new InternalAddress();
-		myAddress.setStreet(externalAddress.getStreet());
-		myAddress.setZipCode(externalAddress.getZipCode());
-		myAddress.setCity(zipCodeMapper.mapCityFromZipCode(myAddress.getZipCode()));
+		addressBuilder.populateFrom(externalAddress);
+		addressBuilder.populateFrom(zipCodeMapper);
+		InternalAddress myAddress = addressBuilder.build();
 
 		if(myAddress.isInOslo()) {
 			// Do something 
